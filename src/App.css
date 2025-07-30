@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-slick-arrow {
+  width: 64px !important;
+  height: 64px !important;
+  background: #ec4899 !important; /* Tailwind's pink-500 */
+  color: #fff !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 15px -3px rgba(236,72,153,0.2);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: background 0.2s;
+}
+.custom-slick-arrow:hover {
+  background: #db2777 !important; /* Tailwind's pink-600 */
+}
