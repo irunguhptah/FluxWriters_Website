@@ -1,59 +1,89 @@
-import React, { useState } from 'react';
-import { Star, ChevronDown, ChevronUp, Users, Quote, Award } from 'lucide-react';
+import React, { useState } from "react";
+import { Star, ChevronDown, ChevronUp, Quote, Award } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const WriterProfileBox = ({ title, text, tag, author, isOnline, action, image, rating }) => {
-  const stars = Array(5).fill(0).map((_, i) => (
-    <Star 
-      key={i} 
-      className={`h-4 w-4 ${i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`} 
-    />
-  ));
+const WriterProfileBox = ({
+  title,
+  text,
+  tag,
+  author,
+  isOnline,
+  action,
+  image,
+  rating,
+}) => {
+  const stars = Array(5)
+    .fill(0)
+    .map((_, i) => (
+      <Star
+        key={i}
+        className={`h-4 w-4 ${
+          i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
+        }`}
+      />
+    ));
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-100 transition-all duration-300 hover:shadow-xl hover:border-blue-200 transform hover:-translate-y-1 group">
       {/* Header with gradient and profile image */}
-<div className="h-28 bg-gradient-to-br from-green-300 to-blue-300 relative">
-  <div className="absolute -bottom-10 left-6">
-    <div
-      className="h-20 w-20 rounded-full border-4 border-white bg-white shadow-md relative transform group-hover:scale-110 transition-transform"
-      style={{ overflow: 'visible' }} // IMPORTANT: allow dot overflow
-    >
-      <img src={image} alt={title} className="h-full w-full object-cover rounded-full" />
-      <span
-        className={`absolute -top-0 -right-0 h-4 w-4 rounded-full border-2 border-white ${
-          isOnline ? 'bg-green-500' : 'bg-red-500'
-        } shadow-lg z-[9999]`}
-        title={isOnline ? 'Online' : 'Offline'}
-      ></span>
-    </div>
-  </div>
-</div>
+      <div className="h-28 bg-gradient-to-br from-green-300 to-blue-300 relative">
+        <div className="absolute -bottom-10 left-6">
+          <div
+            className="h-20 w-20 rounded-full border-4 border-white bg-white shadow-md relative transform group-hover:scale-110 transition-transform"
+            style={{ overflow: "visible" }} // IMPORTANT: allow dot overflow
+          >
+            <img
+              src={image}
+              alt={title}
+              className="h-full w-full object-cover rounded-full"
+            />
+            <span
+              className={`absolute -top-0 -right-0 h-4 w-4 rounded-full border-2 border-white ${
+                isOnline ? "bg-green-500" : "bg-red-500"
+              } shadow-lg z-[9999]`}
+              title={isOnline ? "Online" : "Offline"}
+            ></span>
+          </div>
+        </div>
+      </div>
 
-      
       {/* Content */}
       <div className="pt-12 px-6 pb-6">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{title}</h3>
+          <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+            {title}
+          </h3>
           <div className="flex flex-col items-end">
-            <span className="text-xl font-bold text-blue-600">{rating}.0/5</span>
+            <span className="text-xl font-bold text-blue-600">
+              {rating}.0/5
+            </span>
             <span className="flex items-center">{stars}</span>
           </div>
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-4 min-h-[40px]">{text}</p>
-        
+
         <div className="flex justify-between items-center">
           <div>
-            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${isOnline ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}`}>
-              <span className={`h-2 w-2 rounded-full mr-1 ${isOnline ? "bg-green-500" : "bg-gray-500"}`}></span>
+            <span
+              className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                isOnline
+                  ? "bg-green-100 text-green-800"
+                  : "bg-gray-100 text-gray-800"
+              }`}
+            >
+              <span
+                className={`h-2 w-2 rounded-full mr-1 ${
+                  isOnline ? "bg-green-500" : "bg-gray-500"
+                }`}
+              ></span>
               {author}
             </span>
           </div>
-          
-          <button 
+
+          <button
             onClick={action}
             className="px-4 py-1 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-lg text-sm font-medium hover:shadow-md transition-all hover:scale-105"
           >
@@ -70,33 +100,33 @@ const TestimonialSlider = () => {
     {
       text: "The quality of the paper exceeded my expectations. It was well-researched, perfectly formatted, and delivered ahead of schedule.",
       name: "Sarah J.",
-      role: "Graduate Student"
+      role: "Graduate Student",
     },
     {
       text: "FluxWriters helped me through a challenging semester. The writer understood my requirements perfectly and delivered outstanding work.",
       name: "Michael T.",
-      role: "Undergraduate Student"
+      role: "Undergraduate Student",
     },
     {
       text: "I'm impressed by the depth of knowledge and attention to detail. My assignment received high praise from my professor.",
       name: "Jennifer L.",
-      role: "PhD Candidate"
+      role: "PhD Candidate",
     },
     {
       text: "Fast, reliable, and top-notch quality. I will definitely use FluxWriters again for my future assignments.",
       name: "David K.",
-      role: "MBA Student"
+      role: "MBA Student",
     },
     {
       text: "The support team was very responsive and helpful. The writer delivered exactly what I needed.",
       name: "Emily R.",
-      role: "Law Student"
+      role: "Law Student",
     },
     {
       text: "Great experience! The paper was original and well-written. Highly recommend their services.",
       name: "Chris P.",
-      role: "Engineering Student"
-    }
+      role: "Engineering Student",
+    },
   ];
 
   const settings = {
@@ -111,25 +141,39 @@ const TestimonialSlider = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-        }
-      }
+        },
+      },
     ],
     nextArrow: (
       <button className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
-        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
+        >
           <path d="M9 18l6-6-6-6" />
         </svg>
       </button>
     ),
     prevArrow: (
       <button className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
-        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
+        >
           <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
@@ -148,11 +192,18 @@ const TestimonialSlider = () => {
               <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100 flex flex-col items-center h-full min-h-[260px] transform transition-all hover:scale-[1.02] hover:shadow-xl">
                 <Quote className="text-blue-200 h-10 w-10 mb-2" />
                 <div className="mb-4">
-                  {Array(5).fill(0).map((_, i) => (
-                    <Star key={i} className="inline h-5 w-5 text-yellow-400 fill-yellow-400" />
-                  ))}
+                  {Array(5)
+                    .fill(0)
+                    .map((_, i) => (
+                      <Star
+                        key={i}
+                        className="inline h-5 w-5 text-yellow-400 fill-yellow-400"
+                      />
+                    ))}
                 </div>
-                <p className="text-gray-600 italic mb-6 text-center">"{t.text}"</p>
+                <p className="text-gray-600 italic mb-6 text-center">
+                  "{t.text}"
+                </p>
                 <div className="flex items-center justify-center mt-auto">
                   <div className="h-10 w-10 rounded-full bg-gradient-to-br from-green-300 to-blue-300 flex items-center justify-center text-white font-bold">
                     {t.name.charAt(0)}
@@ -261,7 +312,7 @@ export default function Blog() {
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
               <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Meet Our
-              </span>{' '}
+              </span>{" "}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                   Professional Writers
@@ -305,11 +356,13 @@ export default function Blog() {
               <span className="relative z-10 flex items-center justify-center gap-2">
                 {!showMore ? (
                   <>
-                    Load More Writers <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
+                    Load More Writers{" "}
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
                   </>
                 ) : (
                   <>
-                    Show Less <ChevronUp className="h-4 w-4 transition-transform group-hover:-translate-y-1" />
+                    Show Less{" "}
+                    <ChevronUp className="h-4 w-4 transition-transform group-hover:-translate-y-1" />
                   </>
                 )}
               </span>
@@ -326,7 +379,7 @@ export default function Blog() {
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
               <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Client
-              </span>{' '}
+              </span>{" "}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                   Testimonials

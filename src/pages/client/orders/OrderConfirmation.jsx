@@ -1,5 +1,5 @@
 // OrderConfirmation.jsx
-import { CheckCircle, Clock, FileText, User, CreditCard } from "lucide-react";
+import { CheckCircle, Clock, FileText, CreditCard } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function OrderConfirmation() {

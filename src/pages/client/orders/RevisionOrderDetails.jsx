@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import {
-  RefreshCw,
   FileText,
   AlertTriangle,
-  CheckCircle,
   Check,
   X,
   MessageSquare,

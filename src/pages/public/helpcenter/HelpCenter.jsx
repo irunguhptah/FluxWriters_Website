@@ -164,7 +164,7 @@ const FAQItem = ({ faq, index, isExpanded, toggleFAQ, activeCategory }) => (
             className="mt-3 text-blue-600 dark:text-blue-400 hover:underline flex items-center text-sm"
             title="Watch a tutorial video"
             aria-label="Watch a tutorial video"
-            onClick={() => toast("Tutorial video coming soon!", { icon: "🎬" })}
+            onClick={() => console.log("Tutorial video coming soon!")}
           >
             <Zap className="mr-1 h-4 w-4" />
             Watch a tutorial video
@@ -204,12 +204,9 @@ const LiveChatPopup = ({ onClose }) => (
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
           aria-label="Type your message"
           title="Type your message"
-          onFocus={() =>
-            toast("Type your question and press Enter to chat with support.", {
-              icon: "💬",
-              duration: 1500,
-            })
-          }
+          onFocus={() => {
+            /* Input focus - no toast needed */
+          }}
         />
       </div>
     </div>
@@ -224,36 +221,24 @@ export default function HelpCenter() {
 
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
-    toast(
-      expandedFAQ === index
-        ? "FAQ collapsed."
-        : "FAQ expanded. See the answer below.",
-      {
-        icon: "💡",
-        duration: 1200,
-      }
-    );
+    // Remove FAQ toggle toast - visual expansion is clear enough
   };
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
     setExpandedFAQ(null);
-    toast(
-      `Showing ${category.charAt(0).toUpperCase() + category.slice(1)} FAQs.`,
-      {
-        icon: "📚",
-        duration: 1200,
-      }
-    );
+    // Remove category switch toast - active tab is visually clear
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
+    // Keep this toast as it informs user about missing feature
     toast("Search feature coming soon!", { icon: "🔍" });
   };
 
   const handleOpenChat = () => {
     setIsChatOpen(true);
+    // Keep this toast as it's important user feedback for support
     toast("Live chat opened. An agent will assist you shortly.", {
       icon: "💬",
       duration: 2000,
@@ -262,10 +247,7 @@ export default function HelpCenter() {
 
   const handleCloseChat = () => {
     setIsChatOpen(false);
-    toast("Live chat closed.", {
-      icon: "❌",
-      duration: 1200,
-    });
+    // Remove chat close toast - closing is obvious
   };
 
   const filteredFAQs = FAQ_CATEGORIES[activeCategory].filter(
@@ -384,12 +366,9 @@ export default function HelpCenter() {
               actionText="support@fluxwriters.com"
               colorClass="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300"
               actionColor="text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900 px-2 py-0.5 rounded-full"
-              onClick={() =>
-                toast("Opening your email client...", {
-                  icon: "✉️",
-                  duration: 1200,
-                })
-              }
+              onClick={() => {
+                // Remove email toast - action is clear from context
+              }}
             />
 
             <SupportCard
@@ -399,12 +378,9 @@ export default function HelpCenter() {
               actionText="+1 (800) 555-1234"
               colorClass="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300"
               actionColor="text-fuchsia-700 dark:text-fuchsia-300 bg-fuchsia-50 dark:bg-fuchsia-900 px-2 py-0.5 rounded-full"
-              onClick={() =>
-                toast("Dialing support number...", {
-                  icon: "📞",
-                  duration: 1200,
-                })
-              }
+              onClick={() => {
+                // Remove dial toast - action is clear from button context
+              }}
             />
 
             {/* Resources Card */}
@@ -419,35 +395,29 @@ export default function HelpCenter() {
                   </h3>
                   <ul className="space-y-2">
                     <li>
-                      <a
-                        href="#"
+                      <button
+                        onClick={() => {
+                          console.log("Navigate to How to Request Revisions");
+                          // Remove resource toast - navigation is clear enough
+                        }}
                         className="hover:underline flex items-center transition-colors"
                         title="How to Request Revisions"
-                        onClick={() =>
-                          toast("Opening resource: How to Request Revisions", {
-                            icon: "📖",
-                          })
-                        }
                       >
                         <Clock className="h-4 w-4 mr-2" />
                         How to Request Revisions
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <button
+                        onClick={() => {
+                          // Remove resource toast - navigation is clear enough
+                        }}
                         className="hover:underline flex items-center transition-colors"
                         title="Writing Tips from Our Experts"
-                        onClick={() =>
-                          toast(
-                            "Opening resource: Writing Tips from Our Experts",
-                            { icon: "📖" }
-                          )
-                        }
                       >
                         <Zap className="h-4 w-4 mr-2" />
                         Writing Tips from Our Experts
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>

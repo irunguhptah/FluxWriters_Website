@@ -100,7 +100,7 @@ export default function AccountPage() {
               key={tab.id}
               onClick={() => {
                 setActiveTab(tab.id);
-                toast(`${tab.label} settings`, { icon: "⚙️", duration: 1500 });
+                // Remove tab switch toast - active tab is visually clear
               }}
               className={`px-3 py-3 text-xs font-medium whitespace-nowrap rounded-t-lg ${
                 activeTab === tab.id

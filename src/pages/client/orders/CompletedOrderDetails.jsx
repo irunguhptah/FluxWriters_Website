@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import {
-  CheckCircle,
   FileText,
   Star,
   Download,
-  ThumbsUp,
   MessageSquare,
   ChevronLeft,
   File,
@@ -14,7 +12,6 @@ import {
   Info,
   Paperclip,
   Check,
-  X,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";

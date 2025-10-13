@@ -4,7 +4,6 @@ import {
   FileText,
   MessageSquare,
   Bell,
-  CheckCircle,
   AlertCircle,
   Clock,
   Info,

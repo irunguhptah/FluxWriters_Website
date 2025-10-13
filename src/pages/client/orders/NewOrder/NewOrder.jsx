@@ -70,6 +70,7 @@ export default function NewOrder() {
       ...prev,
       files: [...prev.files, ...Array.from(e.target.files)],
     }));
+    // Keep toast for file upload as it's important feedback
     toast("File(s) uploaded!", { icon: "📎", duration: 1200 });
   };
 
@@ -78,9 +79,10 @@ export default function NewOrder() {
       ...prev,
       files: prev.files.filter((_, i) => i !== index),
     }));
-    toast("File removed.", { icon: "❌", duration: 1000 });
+    // Remove this toast - file removal is obvious from UI
   };
 
+  // eslint-disable-next-line no-unused-vars
   const getStepStatus = (stepNumber) => {
     if (stepNumber < step) return "completed";
     if (stepNumber === step) return "current";
@@ -89,32 +91,16 @@ export default function NewOrder() {
 
   const handleStepChange = (nextStep) => {
     setStep(nextStep);
-    const stepLabels = [
-      "Paper Details",
-      "Instructions & Materials",
-      "Review & Submit",
-    ];
-    toast(`Step: ${stepLabels[nextStep - 1]}`, { icon: "📝", duration: 1200 });
+    // Remove step navigation toast - visual progress indicator is enough
   };
 
   const handleFieldFocus = (label) => {
-    toast(`Enter your ${label}.`, { icon: "ℹ️", duration: 1000 });
+    // Remove field focus toast - not necessary
   };
 
   const handleWriterPreference = (option) => {
     setFormData((prev) => ({ ...prev, writerPreference: option }));
-    toast(
-      `Writer preference set: ${
-        option === "any"
-          ? "Any Qualified Writer"
-          : option === "top-rated"
-          ? "Top Rated Writer"
-          : option === "subject-expert"
-          ? "Subject Expert"
-          : "My Preferred Writer"
-      }`,
-      { icon: "👤", duration: 1200 }
-    );
+    // Remove writer preference toast - visual selection is clear enough
     if (option === "preferred") {
       setInviteModalOpen(true);
     }
@@ -314,4 +300,5 @@ const saveOrderToLocalStorage = (order) => {
   localStorage.setItem("orderFormDataList", JSON.stringify(existing));
 };
 
+// eslint-disable-next-line no-unused-vars
 const orders = JSON.parse(localStorage.getItem("orderFormDataList") || "[]");

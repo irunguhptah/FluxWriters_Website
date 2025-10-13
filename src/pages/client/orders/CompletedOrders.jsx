@@ -2,7 +2,6 @@ import {
   CheckCircle,
   FileText,
   Star,
-  Download,
   ThumbsUp,
   MessageSquare,
 } from "lucide-react";

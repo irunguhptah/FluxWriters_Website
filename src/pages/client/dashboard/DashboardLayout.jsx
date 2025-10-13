@@ -5,10 +5,8 @@ import {
   FileText,
   Clock,
   CheckCircle,
-  MessageSquare,
   Bell,
   HelpCircle,
-  User,
   PlusCircle,
   X as XIcon,
   Edit3 as EditIcon,
@@ -18,7 +16,6 @@ import {
 import { useAuth } from "../../../context/AuthContext";
 import toast from "react-hot-toast";
 import DashboardLayoutContainer from "../../../components/layout/DashboardLayoutContainer";
-
 
 const orderSubNotifications = {
   inprogress: 2,
@@ -123,8 +120,8 @@ export default function DashboardLayout() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(
     window.innerWidth < 768
   );
-  const [unreadNotifications, setUnreadNotifications] = useState(3);
-  const [activeChats, setActiveChats] = useState(2);
+  const [unreadNotifications] = useState(3);
+  const [activeChats] = useState(2);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [openSubmenus, setOpenSubmenus] = useState({
     orders: true,
@@ -198,51 +195,19 @@ export default function DashboardLayout() {
   };
 
   const toggleSidebar = () => {
-    setSidebarCollapsed((prev) => {
-      const newState = !prev;
-      toast(newState ? "Sidebar collapsed." : "Sidebar expanded.", {
-        icon: newState ? "⬅️" : "➡️",
-        duration: 1200,
-      });
-      return newState;
-    });
+    setSidebarCollapsed((prev) => !prev);
   };
 
   const toggleSubmenu = (key) => {
-    setOpenSubmenus((prev) => {
-      const newState = { ...prev, [key]: !prev[key] };
-      if (key === "orders" && newState[key])
-        toast("Browse all your orders by status.", { icon: "📦" });
-      else if (key === "writers" && newState[key])
-        toast("Find and favorite writers.", { icon: "🧑‍💻" });
-      return newState;
-    });
+    setOpenSubmenus((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleNavClick = (item) => {
-    switch (item.name) {
-      case "New Order":
-        toast("Start a new order here!", { icon: "📝" });
-        break;
-      case "Notifications":
-        toast("View your latest notifications.", { icon: "🔔" });
-        break;
-      case "Messages":
-        toast("Open your messages panel.", { icon: "💬" });
-        break;
-      case "My Orders":
-        toast("Browse all your orders by status.", { icon: "📦" });
-        break;
-      case "Writers":
-        toast("Find and favorite writers.", { icon: "🧑‍💻" });
-        break;
-      default:
-        break;
-    }
+    // Handle navigation without toast notifications
   };
 
   const handleSubNavClick = (sub) => {
-    toast(`Viewing ${sub.name}.`, { icon: "📄" });
+    // Handle sub-navigation without toast notifications
   };
 
   const handleLogout = () => {
@@ -251,11 +216,9 @@ export default function DashboardLayout() {
     toast("Signed out successfully.", { icon: "👋" });
   };
 
+  // eslint-disable-next-line no-unused-vars
   const toggleMobileSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
-    if (!mobileSidebarOpen) {
-      toast("Menu opened", { icon: "📱", duration: 1000 });
-    }
   };
 
   const handleMobileNavClick = (item) => {

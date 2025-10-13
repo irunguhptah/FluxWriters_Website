@@ -98,7 +98,7 @@ export default function OrderDraftPage() {
     // Set up refresh interval for real-time updates
     const interval = setInterval(fetchData, 30000);
     return () => clearInterval(interval);
-  }, [order?.id]);
+  }, [order?.id, order]);
 
   // Filter and sort bids
   const filteredBids = bids

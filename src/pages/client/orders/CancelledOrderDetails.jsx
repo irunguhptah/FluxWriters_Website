@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  XCircle,
   FileText,
   RotateCcw,
   DollarSign,
@@ -12,8 +11,6 @@ import {
   Info,
   Paperclip,
   AlertTriangle,
-  Clock,
-  CheckCircle,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";

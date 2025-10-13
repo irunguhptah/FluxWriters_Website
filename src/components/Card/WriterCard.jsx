@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Star, CheckCircle, MessageSquare, Clock } from "lucide-react";
 
 export default function WriterCard({ writer, bid, onAccept }) {

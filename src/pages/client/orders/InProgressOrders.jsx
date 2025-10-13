@@ -1,12 +1,4 @@
-import {
-  Clock,
-  AlertCircle,
-  CheckCircle,
-  FileText,
-  MessageSquare,
-  Download,
-  Zap,
-} from "lucide-react";
+import { Clock, CheckCircle, FileText, MessageSquare, Zap } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +29,7 @@ export default function InProgressOrders() {
 
   // Action handlers with toasts
   const handleChat = (order) => {
-    toast("Opening chat with writer...", { icon: "💬" });
+    // Chat opens - no toast needed
   };
 
   const handleViewOrder = (order) => {

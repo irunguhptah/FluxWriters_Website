@@ -24,6 +24,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function WriterProfile() {
+  // eslint-disable-next-line no-unused-vars
   const { writerId } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");

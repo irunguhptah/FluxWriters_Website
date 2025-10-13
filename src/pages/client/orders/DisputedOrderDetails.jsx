@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
-  AlertOctagon,
   FileText,
-  CheckCircle,
   MessageSquare,
   DollarSign,
   Shield,
@@ -11,7 +9,6 @@ import {
   User,
   Calendar,
   Info,
-  Paperclip,
   Download,
   AlertTriangle,
   Clock,
@@ -387,27 +384,33 @@ export default function DisputedOrderDetails() {
                   Dispute Resources
                 </h3>
                 <div className="space-y-3">
-                  <a
-                    href="#"
+                  <button
+                    onClick={() =>
+                      console.log("Navigate to Dispute Resolution Policy")
+                    }
                     className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     <HelpCircle className="h-4 w-4" />
                     <span>Dispute Resolution Policy</span>
-                  </a>
-                  <a
-                    href="#"
+                  </button>
+                  <button
+                    onClick={() =>
+                      console.log("Navigate to Academic Integrity Guidelines")
+                    }
                     className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     <FileText className="h-4 w-4" />
                     <span>Academic Integrity Guidelines</span>
-                  </a>
-                  <a
-                    href="#"
+                  </button>
+                  <button
+                    onClick={() =>
+                      console.log("Navigate to How to Prepare Your Evidence")
+                    }
                     className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     <Shield className="h-4 w-4" />
                     <span>How to Prepare Your Evidence</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

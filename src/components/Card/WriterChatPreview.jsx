@@ -1,4 +1,4 @@
-import { MessageSquare, Clock, CheckCircle } from "lucide-react";
+import { Clock } from "lucide-react";
 
 export default function WriterChatPreview({ writers, onSelectWriter }) {
   // In a real app, you would fetch actual messages from your API
